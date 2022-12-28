@@ -6,8 +6,7 @@ pub(crate) async fn greet(name: web::Path<String>) -> impl Responder {
 }
 
 #[post("/translate")]
-pub(crate) async fn translate(body: web::Bytes) -> impl Responder {
-    let body = String::from_utf8(body.to_vec()).unwrap();
+pub(crate) async fn translate(body: String) -> impl Responder {
     let neko_text = body.split(" ");
     let mut translated = String::new();
     for word in neko_text {
